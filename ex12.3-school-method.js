@@ -40,12 +40,12 @@ const school = {
 };
 
 //1
-// const findPerson = (type, id) => {
-//   const personById = type.find((person) => person.id === id);
-//   return personById;
-// };
-// console.log(findPerson(school.teachers, 2));
-// console.log(findPerson(school.students, 12));
+const findPerson = (type, id) => {
+  const personById = type.find((person) => person.id === id);
+  return personById;
+};
+console.log(findPerson(school.teachers, 2));
+console.log(findPerson(school.students, 12));
 
 //2
 const assignStudent = (studentId, isSubject) => {
@@ -64,6 +64,16 @@ assignStudent(11, "history");
 console.log(school.teachers);
 
 //3
-// const assignTeachersSubject = (teacherId,newSubject) => {
-//   const teacherSubject = school.teachers
-// };
+const assignTeachersSubject = (teacherId, newSubject) => {
+  const teacherSubject = school.teachers.find((teacher) => teacher.id === teacherId && !teacher.subjects.includes(newSubject));
+  if (teacherSubject) {
+    teacherSubject.subjects.push(newSubject);
+  } else {
+    console.log("subject is already exist");
+  }
+};
+
+assignTeachersSubject(1, "math");
+assignTeachersSubject(1, "biology");
+
+console.log(school.teachers);
